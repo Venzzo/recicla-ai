@@ -242,7 +242,7 @@ Avaliação executada sobre as **1.042 imagens cegas** do conjunto de teste (3.5
 * **Taxa de Quadros (Throughput):** **139.2 FPS** (capacidade de inferência em tempo real).
 * **Vantagens da Abordagem Local:**
   * **100% Offline:** Funciona em qualquer lugar sem sinal de internet ou plano de dados.
-  * **Privacidade Absoluta:** Nenhuma foto do usuário sai do aparelho.
+  * **Processamento local:** as imagens utilizadas na análise não são enviadas a um servidor externo pelo aplicativo.
   * **Sem Custos Recorrentes:** Zero gastos com tokens de APIs pagas ou hospedagem em nuvem.
 
 ---
