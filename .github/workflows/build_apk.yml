@@ -36,6 +36,11 @@ jobs:
           ls -lh assets/models/best.onnx
           ls -lh assets/data/materials_catalog.json
 
+      - name: Clean & Get Dependencies
+        run: |
+          flutter clean
+          flutter pub get
+
       - name: Build Android Release APK
         run: flutter build apk --release --split-per-abi
 

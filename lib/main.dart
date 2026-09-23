@@ -36,7 +36,7 @@ class ReciclaAiApp extends StatelessWidget {
           elevation: 2,
           centerTitle: false,
         ),
-        cardTheme: CardThemeData(
+        cardTheme: CardTheme(
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
