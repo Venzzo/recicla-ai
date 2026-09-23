@@ -1,0 +1,178 @@
+{
+  "project": "RECICLA.AI",
+  "version": "1.0.0",
+  "standard": "Resolução CONAMA nº 275/2001",
+  "academic_disclaimer": "Este aplicativo é um protótipo acadêmico com modelo de visão computacional leve (YOLOv5n) executado 100% localmente no dispositivo. Detecções com baixa confiança (< 40%) devem ser inspecionadas visualmente antes do descarte.",
+  "confidence_thresholds": {
+    "high_confidence_min": 0.60,
+    "medium_confidence_min": 0.40,
+    "low_confidence_warning": "Baixa confiança. Verifique visualmente o material antes do descarte."
+  },
+  "classes": {
+    "biodegradable": {
+      "id": 0,
+      "name_en": "biodegradable",
+      "name_pt": "Biodegradável / Orgânico",
+      "conama_color_name": "Marrom",
+      "conama_hex_color": "#795548",
+      "conama_text_color": "#FFFFFF",
+      "icon": "eco",
+      "recyclable": false,
+      "compostable": true,
+      "disposal_bin": "Lixeira Marrom (Orgânicos) ou Compostagem Doméstica",
+      "general_instructions": "Destine para composteira doméstica ou coleta de resíduos orgânicos da sua cidade. Nunca misture resíduos orgânicos com recicláveis secos (papel, plástico, vidro, metal), pois a umidade e a gordura inviabilizam a triagem mecânica e reciclagem dos outros materiais.",
+      "preparation_steps": [
+        "Escorra líquidos excedentes antes de ensacar.",
+        "Para composteiras domésticas: corte em pedaços menores para acelerar a biodegradação.",
+        "Não misture plásticos convencionais (mesmo sacolinhas que pareçam biodegradáveis)."
+      ],
+      "examples": [
+        "Cascas de frutas e legumes",
+        "Borra de café e filtros de papel usados",
+        "Restos de vegetais crus ou cozidos",
+        "Folhas secas, aparas de jardim e serragem limpa"
+      ],
+      "multi_material_notes": "Se o alimento estiver dentro de pote plástico ou embalagem metálica, separe o resíduo orgânico para o lixo marrom e higienize a embalagem antes de descartá-la na lixeira correspondente.",
+      "academic_model_notes": "Classe minoritária no dataset de treino (apresenta alto recall de 73.5%, mas precisão reduzida). Recomenda-se validação visual pelo usuário."
+    },
+    "cardboard": {
+      "id": 1,
+      "name_en": "cardboard",
+      "name_pt": "Papelão",
+      "conama_color_name": "Azul",
+      "conama_hex_color": "#1976D2",
+      "conama_text_color": "#FFFFFF",
+      "icon": "inventory_2",
+      "recyclable": true,
+      "compostable": false,
+      "disposal_bin": "Lixeira Azul (Papel / Papelão)",
+      "general_instructions": "O papelão ondulado e prensado possui fibras longas de celulose altamente valorizadas na cadeia de reciclagem. Mantenha as caixas secas, limpas e desmontadas.",
+      "preparation_steps": [
+        "Desmonte e dobre as caixas para reduzir drasticamente o volume ocupado na lixeira e no caminhão de coleta.",
+        "Remova fitas adesivas plásticas largas e grampos metálicos pesados sempre que possível.",
+        "Evite contato com água ou óleo: papelão molhado perde resistência estrutural e pode embolorar antes da triagem."
+      ],
+      "examples": [
+        "Caixas de entrega e e-commerce",
+        "Embalagens de cereais e remédios",
+        "Cartelas e caixas de ovos limpas",
+        "Tubos de papelão de rolos de papel"
+      ],
+      "multi_material_notes": "Caixas de pizza com fundo engordurado: destaque a tampa limpa para reciclagem (Lixeira Azul) e descarte a parte suja de queijo/óleo no lixo comum/rejeito.",
+      "academic_model_notes": "Amostragem reduzida no conjunto de teste independente (20 instâncias). O modelo identifica caixas com recall de 60%."
+    },
+    "glass": {
+      "id": 2,
+      "name_en": "glass",
+      "name_pt": "Vidro",
+      "conama_color_name": "Verde",
+      "conama_hex_color": "#388E3C",
+      "conama_text_color": "#FFFFFF",
+      "icon": "wine_bar",
+      "recyclable": true,
+      "compostable": false,
+      "disposal_bin": "Lixeira Verde (Vidro)",
+      "general_instructions": "O vidro é 100% e infinitamente reciclável sem nenhuma perda de qualidade ou pureza. Cada tonelada de cacos reciclados economiza 1,2 tonelada de matéria-prima virgem (areia, calcário e barrilha) e reduz o consumo de energia dos fornos industriais.",
+      "preparation_steps": [
+        "Enxágue o interior da garrafa ou frasco com um fio de água ou água de reuso para retirar restos de bebidas ou alimentos.",
+        "Desrosqueie tampas e remova anéis de vedação: tampas metálicas vão na Lixeira Amarela e tampas plásticas na Lixeira Vermelha.",
+        "Vidro quebrado: embale obrigatoriamente dentro de uma caixa de leite vazia, caixa de papelão ou várias camadas de jornal, escrevendo 'CUIDADO: VIDRO QUEBRADO' para proteger a integridade dos catadores e garis."
+      ],
+      "examples": [
+        "Garrafas de refrigerante, suco e cerveja",
+        "Potes de geleia, palmito e maionese",
+        "Frascos de perfumes e cosméticos limpos",
+        "Copos de vidro temperado e frascos de conserva"
+      ],
+      "multi_material_notes": "Atenção a embalagens multimateriais: garrafas com tampa de rosca de metal exigem desmontagem. Separe o corpo (Verde) e a tampa (Amarela).",
+      "academic_model_notes": "Classe com boa representatividade nas detecções do modelo (mAP50-95 de 6.34% com resolução 320x320)."
+    },
+    "metal": {
+      "id": 3,
+      "name_en": "metal",
+      "name_pt": "Metal",
+      "conama_color_name": "Amarelo",
+      "conama_hex_color": "#FBC02D",
+      "conama_text_color": "#000000",
+      "icon": "view_in_ar",
+      "recyclable": true,
+      "compostable": false,
+      "disposal_bin": "Lixeira Amarela (Metal)",
+      "general_instructions": "O Brasil é líder mundial na reciclagem de latas de alumínio (índice superior a 95%). A reciclagem de alumínio economiza 95% da energia elétrica necessária para a produção primária a partir da bauxita.",
+      "preparation_steps": [
+        "Enxágue embalagens de conservas (molho de tomate, atum, milho) para não atrair insetos e evitar odores durante o armazenamento.",
+        "Amasse as latas de alumínio com as mãos ou pés para economizar espaço de armazenamento doméstico e logística.",
+        "Empurre a tampa de latas de aço para dentro da lata após abri-la para evitar cortes nos operadores de triagem."
+      ],
+      "examples": [
+        "Latas de alumínio de bebidas",
+        "Latas de aço de conservas e leite em pó",
+        "Tampinhas metálicas de garrafas",
+        "Marmitas e folhas de papel alumínio limpas",
+        "Panelas velhas sem cabos de baquelite"
+      ],
+      "multi_material_notes": "Latas de aerosol: verifique se estão completamente esvaziadas antes do descarte. Nunca fure nem amasse latas sob pressão.",
+      "academic_model_notes": "Classe com alto desempenho no teste independente (mAP50 de 20.10% e precisão de 22.0% com apenas 1 época de treino)."
+    },
+    "paper": {
+      "id": 4,
+      "name_en": "paper",
+      "name_pt": "Papel",
+      "conama_color_name": "Azul",
+      "conama_hex_color": "#1976D2",
+      "conama_text_color": "#FFFFFF",
+      "icon": "description",
+      "recyclable": true,
+      "compostable": false,
+      "disposal_bin": "Lixeira Azul (Papel / Papelão)",
+      "general_instructions": "Folhas de escritório, jornais e revistas podem ser recicladas entre 5 a 7 vezes até que as fibras de celulose fiquem excessivamente curtas. Mantenha o papel sempre limpo e seco.",
+      "preparation_steps": [
+        "Não amasse folhas intencionalmente: dobrar ou rasgar é preferível a embolar, pois papel em bola ocupa 10x mais espaço e danifica as fibras celulósicas.",
+        "Separe papéis contaminados: papéis com comida, gordura de fritura ou fluidos corporais não são recicláveis e devem ir para o rejeito comum.",
+        "Remova espirais plásticos de cadernos velhos antes do descarte (espiral vai na lixeira vermelha)."
+      ],
+      "examples": [
+        "Folhas sulfite e formulários de escritório",
+        "Jornais, folhetos, livros velhos e revistas",
+        "Envelopes e sacolas de papel limpas",
+        "Cadernos e cartolinas escolares"
+      ],
+      "multi_material_notes": "Copos descartáveis de café (papel revestido de polietileno): embora pareçam apenas de papel, a camada plástica interna impede reciclagem convencional na maioria dos municípios. Consulte as cooperativas locais.",
+      "academic_model_notes": "Classe de maior volume e precisão no teste independente (mAP50 de 25.50% e precisão de 30.90%)."
+    },
+    "plastic": {
+      "id": 5,
+      "name_en": "plastic",
+      "name_pt": "Plástico",
+      "conama_color_name": "Vermelho",
+      "conama_hex_color": "#D32F2F",
+      "conama_text_color": "#FFFFFF",
+      "icon": "local_drink",
+      "recyclable": true,
+      "compostable": false,
+      "disposal_bin": "Lixeira Vermelha (Plástico)",
+      "general_instructions": "Os plásticos são derivados do petróleo e podem levar séculos para se decompor no meio ambiente. A triagem por tipo de resina (identificada pelo número no triângulo de flechas de 1 a 7) é fundamental para viabilizar o reaproveitamento industrial.",
+      "preparation_steps": [
+        "Enxágue rapidamente embalagens de xampu, detergente e iogurte para evitar proliferação de bactérias e insetos.",
+        "Desrosqueie a tampa da garrafa PET, aperte o corpo da garrafa para expulsar o ar e recoloque a tampa (garrafa compactada facilita o transporte).",
+        "Rótulos plásticos destacáveis: retire se a instrução da marca indicar 'tire o rótulo aqui'."
+      ],
+      "examples": [
+        "Garrafas PET de refrigerante e água mineral (Tipo 1)",
+        "Embalagens de amaciante, cândida e xampu (Tipo 2 PEAD)",
+        "Potes de sorvete, margarina e copos descartáveis (Tipos 5 PP e 6 PS)",
+        "Sacolas de supermercado e plástico filme limpo (Tipo 4 PEBD)"
+      ],
+      "multi_material_notes": "Embalagens multicamadas (ex.: salgadinhos metalizados / BOPP): não são recicladas na rota comum de PE/PET. Verifique pontos de entrega voluntária (PEV) especializados.",
+      "academic_model_notes": "Classe com expressivo volume no teste (1.585 instâncias, mAP50 de 12.70% e precisão de 29.40%)."
+    }
+  },
+  "conama_bins_summary": [
+    { "name": "Azul", "material": "Papel / Papelão", "hex": "#1976D2", "text_color": "#FFFFFF" },
+    { "name": "Vermelho", "material": "Plástico", "hex": "#D32F2F", "text_color": "#FFFFFF" },
+    { "name": "Verde", "material": "Vidro", "hex": "#388E3C", "text_color": "#FFFFFF" },
+    { "name": "Amarelo", "material": "Metal", "hex": "#FBC02D", "text_color": "#000000" },
+    { "name": "Marrom", "material": "Orgânico / Biodegradável", "hex": "#795548", "text_color": "#FFFFFF" },
+    { "name": "Cinza", "material": "Rejeito Não Reciclável", "hex": "#757575", "text_color": "#FFFFFF" }
+  ]
+}
