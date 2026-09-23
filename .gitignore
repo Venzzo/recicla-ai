@@ -4,6 +4,10 @@ build/
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
+android/.gradle/
+android/local.properties
+**/GeneratedPluginRegistrant.*
+ios/Flutter/
 
 # VS Code / IDE
 .vscode/

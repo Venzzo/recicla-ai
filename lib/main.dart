@@ -28,7 +28,7 @@ class ReciclaAiApp extends StatelessWidget {
           seedColor: Colors.teal,
           primary: Colors.teal.shade800,
           secondary: Colors.amber.shade700,
-          background: Colors.grey.shade50,
+          surface: Colors.grey.shade50,
         ),
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.teal.shade800,
@@ -36,7 +36,7 @@ class ReciclaAiApp extends StatelessWidget {
           elevation: 2,
           centerTitle: false,
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
