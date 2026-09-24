@@ -33,7 +33,7 @@ jobs:
           ls -lh assets/models/best.onnx
           ls -lh assets/data/materials_catalog.json
 
-      - name: Prepare Dependencies
+      - name: Clean & Get Dependencies
         run: |
           flutter clean
           flutter pub get
