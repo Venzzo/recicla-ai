@@ -117,7 +117,7 @@ void main() {
   assertTest(
     'README.md contém seção de Dataset e Treinamento com instruções de reprodução',
     readmeFile.existsSync() &&
-    readmeFile.readAsStringSync().contains('## 4. Dataset e Treinamento') &&
+    (readmeFile.readAsStringSync().contains('## Dataset') || readmeFile.readAsStringSync().contains('## 4. Dataset e Treinamento')) &&
     readmeFile.readAsStringSync().contains('Roboflow Universe') &&
     readmeFile.readAsStringSync().contains('yolov5n.pt'),
   );

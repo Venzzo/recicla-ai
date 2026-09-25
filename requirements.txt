@@ -1,0 +1,20 @@
+# RECICLA.AI - Dependências do Ambiente Python e Inteligência Artificial
+# Utilizado para download de dataset, treinamento, avaliação, exportação e validação local ONNX.
+
+# Processamento matricial e visão computacional
+numpy>=1.24.0
+opencv-python>=4.8.0
+pillow>=10.0.0
+pyyaml>=6.0
+
+# Framework de Deep Learning e treinamento YOLOv5
+torch>=2.0.0
+torchvision>=0.15.0
+yolov5>=7.0.13
+
+# Runtime e exportação de modelos ONNX
+onnx>=1.14.0
+onnxruntime>=1.16.0
+
+# Utilitário para download do dataset (opcional)
+roboflow>=1.1.0
